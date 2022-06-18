@@ -1,13 +1,15 @@
 import React from "react";
 
-class General extends React.Component {
+class Education extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: "",
-      email: "",
-      phoneNumber: ""
+      schoolName: "",
+      from: "",
+      to: "",
+      degree: "",
+      grade: 0.0
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,40 +28,59 @@ class General extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { name, email, phoneNumber } = this.state;
+    const { schoolName, from, to, degree, grade } = this.state;
 
     console.log("form submitted");
-    console.log(name, email, phoneNumber);
+    console.log(schoolName, from, to, degree, grade)
   }
 
   render() {
     return(
       <div>
-        <h1>General</h1>
+        <h1>Education</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Name:
+            Name of University or School:
             <input 
-            name="name" 
+            name="schoolName" 
             type="text"
             placeholder="Enter here"
             onChange={this.handleInputChange} />
           </label>
 
           <label>
-            Email:
+            From:
             <input 
-            name="email" 
-            type="email"
+            name="from" 
+            type="text"
+            placeholder="YYYY"
+            onChange={this.handleInputChange} />
+          </label>
+
+          <label>
+            To:
+            <input 
+            name="to" 
+            type="text"
+            placeholder="YYYY"
+            onChange={this.handleInputChange} />
+          </label>
+
+          <label>
+            Qualification/Degree:
+            <input 
+            name="degree" 
+            type="text"
             placeholder="Enter here"
             onChange={this.handleInputChange} />
           </label>
 
           <label>
-            Phone Number:
+            Grade:
             <input 
-            name="phoneNumber" 
-            type="tel"
+            name="grade" 
+            type="number"
+            step="0.1"
             placeholder="Enter here"
             onChange={this.handleInputChange} />
           </label>
@@ -71,4 +92,4 @@ class General extends React.Component {
   }
 }
 
-export { General }
+export { Education }
