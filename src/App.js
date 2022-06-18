@@ -2,6 +2,7 @@ import React from "react";
 import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { General } from "./components/General";
+import "./styles/App.css"
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="App">
+      <div id="app">
+        <h1>CV Builder</h1>
         <General />
         <Education />
         <Experience />

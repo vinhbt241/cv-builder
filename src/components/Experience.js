@@ -95,13 +95,13 @@ class Experience extends React.Component {
     );
 
     return(
-      <div>
-        <button onClick={this.openForm}>Add</button>
+      <div className="container" id="experience">
+        <h2>Experience</h2>
 
         {formOpened &&
           <form onSubmit={this.handleSubmit}>
             <label>
-              Company:
+              Company
               <input 
               name="companyName" 
               type="text"
@@ -110,7 +110,7 @@ class Experience extends React.Component {
             </label>
 
             <label>
-              City:
+              City
               <input 
               name="cityName" 
               type="text"
@@ -118,26 +118,27 @@ class Experience extends React.Component {
               onChange={this.handleInputChange} />
             </label>
 
-            <label>
-              From:
-              <input 
-              name="from" 
-              type="text"
-              placeholder="YYYY"
-              onChange={this.handleInputChange} />
-            </label>
+            <div class="duration">
+              <label>
+                From
+                <input
+                name="from"
+                type="text"
+                placeholder="YYYY"
+                onChange={this.handleInputChange} />
+              </label>
+              <label>
+                To
+                <input
+                name="to"
+                type="text"
+                placeholder="YYYY"
+                onChange={this.handleInputChange} />
+              </label>
+            </div>
 
             <label>
-              To:
-              <input 
-              name="to" 
-              type="text"
-              placeholder="YYYY"
-              onChange={this.handleInputChange} />
-            </label>
-
-            <label>
-              Role:
+              Role
               <input 
               name="role" 
               type="text"
@@ -146,7 +147,7 @@ class Experience extends React.Component {
             </label>
 
             <label>
-              Description of chief responsibilities::
+              Description of chief responsibilities
               <input 
               name="description" 
               type="text"
@@ -154,12 +155,16 @@ class Experience extends React.Component {
               onChange={this.handleInputChange} />
             </label>
 
-            <button onClick={this.closeForm}>Cancel</button>
-            <input type="submit" value="Save" />
+            <div class="center">
+              <button onClick={this.closeForm}>Cancel</button>
+              <input type="submit" value="Save" />
+            </div>
           </form>
         }
 
         <ul>{infoList}</ul>
+
+        { !formOpened && <button onClick={this.openForm} className="toggle-form">Add</button>}
       </div>
     );
   }

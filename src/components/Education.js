@@ -91,13 +91,13 @@ class Education extends React.Component {
     );
 
     return(
-      <div>
-        <button onClick={this.openForm}>Add</button>
+      <div className="container" id="education">
+        <h2>Education</h2>
 
         { formOpened &&
           <form onSubmit={this.handleSubmit}>
             <label>
-              Name of University or School:
+              Name of University or School
               <input 
               name="schoolName" 
               type="text"
@@ -105,26 +105,27 @@ class Education extends React.Component {
               onChange={this.handleInputChange} />
             </label>
 
-            <label>
-              From:
-              <input 
-              name="from" 
-              type="text"
-              placeholder="YYYY"
-              onChange={this.handleInputChange} />
-            </label>
+            <div className="duration">
+              <label>
+                From
+                <input
+                name="from"
+                type="text"
+                placeholder="YYYY"
+                onChange={this.handleInputChange} />
+              </label>
+              <label>
+                To
+                <input
+                name="to"
+                type="text"
+                placeholder="YYYY"
+                onChange={this.handleInputChange} />
+              </label>
+            </div>
 
             <label>
-              To:
-              <input 
-              name="to" 
-              type="text"
-              placeholder="YYYY"
-              onChange={this.handleInputChange} />
-            </label>
-
-            <label>
-              Qualification/Degree:
+              Qualification/Degree
               <input 
               name="degree" 
               type="text"
@@ -133,7 +134,7 @@ class Education extends React.Component {
             </label>
 
             <label>
-              Grade:
+              Grade
               <input 
               name="grade" 
               type="number"
@@ -142,13 +143,17 @@ class Education extends React.Component {
               onChange={this.handleInputChange} />
             </label>
 
-            <button onClick={this.closeForm}>Cancel</button>
-            <input type="submit" value="Save" />
+            <div className="center">
+              <button onClick={this.closeForm}>Cancel</button>
+              <input type="submit" value="Save" />
+            </div>
           </form>
 
         }
 
         <ul>{infoList}</ul>
+        
+        { !formOpened && <button onClick={this.openForm} className="toggle-form">Add</button>}
       </div>
     );
   }

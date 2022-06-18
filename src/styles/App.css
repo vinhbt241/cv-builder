@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid black;
+  padding: 0 3rem 3rem 3rem;
+  margin: 2rem 0 5rem 0;
+  border-radius: 15px;
+}
+
+.container{
+  width: 45vw;
+
+  display: flex;
+}
+
+#general {
+  justify-content: space-between;
+}
+
+
+#general input {
+  border: none;
+  font-size: 1.5rem;
+  padding: .5em;
+  font-weight: bold;
+}
+
+#general input::placeholder {
+  color: #000;
+}
+
+#side-info {
+  display: flex;
+  flex-direction: column;
+  
+  gap: .5em;
+}
+
+#side-info>input {
+  font-size: 1rem;
+  padding: .5em;
+  font-weight: normal;
+}
+
+#education, #experience {
+  flex-direction: column;
+}
+
+form,
+#education>form>label,
+#experience>form>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.duration {
+  display: flex;
+  gap: 1.5em;
+}
+
+.duration > label {
+  display: flex;
+  gap: .5em;
+  align-items: center;
+}
+
+.duration > label > input {
+  width: 4ch;
+}
+
+form {
+  gap: 1.2em;
+}
+
+form input {
+  padding: .5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  gap: 10em;
+}
+
+.center>button,
+.center>input {
+  font-size: 1rem;
+  width: 5em;
+}
+
+.toggle-form {
+  font-size: 1rem;
+  padding: .3em 0;
+  width: 8rem;
+}
+
+#general, #education {
+  border-bottom: 2px dotted #000;
+  padding-bottom: 2em;
+}
