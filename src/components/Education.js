@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 class Education extends React.Component {
   constructor(props) {
@@ -9,11 +10,16 @@ class Education extends React.Component {
       from: "",
       to: "",
       degree: "",
-      grade: 0.0
+      grade: 0.0,
+      formOpened: false,
+      infoSaved: []
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openForm = this.openForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+    this.removeInfo = this.removeInfo.bind(this);
   }
 
   handleInputChange(e) {
@@ -30,63 +36,119 @@ class Education extends React.Component {
 
     const { schoolName, from, to, degree, grade } = this.state;
 
-    console.log("form submitted");
-    console.log(schoolName, from, to, degree, grade)
+    let infoId = uuidv4();
+
+    this.setState(prevState => ({
+      infoSaved: prevState.infoSaved.concat({
+        schoolName: schoolName,
+        from: from,
+        to: to,
+        degree: degree, 
+        grade: grade,
+        infoId: infoId
+      })
+    }));
+
+    this.closeForm();
+  }
+
+  removeInfo(infoId) {
+    this.setState(prevState => ({
+      infoSaved: prevState.infoSaved.filter(info => info.infoId !== infoId)
+    }));
+  }
+
+  openForm() {
+    this.setState({
+      formOpened: true
+    })
+  }
+
+  closeForm() {
+    this.setState({
+      schoolName: "",
+      from: "",
+      to: "",
+      degree: "",
+      grade: 0.0,
+      formOpened: false
+    })
   }
 
   render() {
+    const { formOpened, infoSaved } = this.state;
+
+    const infoList = infoSaved.map(info => 
+      <li key={info.infoId}>
+        {info.schoolName}
+        {info.from}
+        {info.to}
+        {info.degree}
+        {info.grade}
+
+        <button onClick={this.removeInfo.bind(this, info.infoId)}>Delete</button>
+      </li>
+    );
+
     return(
       <div>
-        <h1>Education</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name of University or School:
-            <input 
-            name="schoolName" 
-            type="text"
-            placeholder="Enter here"
-            onChange={this.handleInputChange} />
-          </label>
+        <button onClick={this.openForm}>Add</button>
 
-          <label>
-            From:
-            <input 
-            name="from" 
-            type="text"
-            placeholder="YYYY"
-            onChange={this.handleInputChange} />
-          </label>
+        { formOpened &&
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Name of University or School:
+              <input 
+              name="schoolName" 
+              type="text"
+              placeholder="Enter here"
+              onChange={this.handleInputChange} />
+            </label>
 
-          <label>
-            To:
-            <input 
-            name="to" 
-            type="text"
-            placeholder="YYYY"
-            onChange={this.handleInputChange} />
-          </label>
+            <label>
+              From:
+              <input 
+              name="from" 
+              type="text"
+              placeholder="YYYY"
+              onChange={this.handleInputChange} />
+            </label>
 
-          <label>
-            Qualification/Degree:
-            <input 
-            name="degree" 
-            type="text"
-            placeholder="Enter here"
-            onChange={this.handleInputChange} />
-          </label>
+            <label>
+              To:
+              <input 
+              name="to" 
+              type="text"
+              placeholder="YYYY"
+              onChange={this.handleInputChange} />
+            </label>
 
-          <label>
-            Grade:
-            <input 
-            name="grade" 
-            type="number"
-            step="0.1"
-            placeholder="Enter here"
-            onChange={this.handleInputChange} />
-          </label>
+            <label>
+              Qualification/Degree:
+              <input 
+              name="degree" 
+              type="text"
+              placeholder="Enter here"
+              onChange={this.handleInputChange} />
+            </label>
 
-          <input type="submit" value="Save" />
-        </form>
+            <label>
+              Grade:
+              <input 
+              name="grade" 
+              type="number"
+              step="0.1"
+              placeholder="Enter here"
+              onChange={this.handleInputChange} />
+            </label>
+
+            <button onClick={this.closeForm}>Cancel</button>
+            <input type="submit" value="Save" />
+          </form>
+
+        }
+
+        <ul>{infoList}</ul>
       </div>
     );
   }
