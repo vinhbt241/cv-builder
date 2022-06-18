@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as uuidv4 } from 'uuid';
 
 class General extends React.Component {
   constructor(props) {
@@ -22,12 +21,6 @@ class General extends React.Component {
     this.setState({
       [name]: value
     })
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    const { name, email, phoneNumber } = this.state;
   }
 
   render() {
