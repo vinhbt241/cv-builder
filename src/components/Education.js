@@ -12,7 +12,11 @@ class Education extends React.Component {
       degree: "",
       grade: 0.0,
       formOpened: false,
-      infoSaved: []
+      infoSaved: [{schoolName: "Bach Khoa", 
+                  from: 2018, 
+                  to: 2022,
+                  degree: "Bachelor",
+                  grade: 8.5}]
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -79,20 +83,26 @@ class Education extends React.Component {
     const { formOpened, infoSaved } = this.state;
 
     const infoList = infoSaved.map(info => 
-      <li key={info.infoId}>
-        {info.schoolName}
-        {info.from}
-        {info.to}
-        {info.degree}
-        {info.grade}
-
+      <div className="container info-list">
+        <div className="flex-column">
+          <div>{info.schoolName}</div>
+          <div>
+            {info.from} - {info.to}
+          </div>
+        </div>
+        <div className="flex-column">
+          <div>{info.degree}</div>
+          <div>{info.grade}</div>
+        </div>
         <button onClick={this.removeInfo.bind(this, info.infoId)}>Delete</button>
-      </li>
+      </div>
     );
 
     return(
       <div className="container" id="education">
         <h2>Education</h2>
+
+        {infoList}
 
         { formOpened &&
           <form onSubmit={this.handleSubmit}>
@@ -150,8 +160,6 @@ class Education extends React.Component {
           </form>
 
         }
-
-        <ul>{infoList}</ul>
         
         { !formOpened && <button onClick={this.openForm} className="toggle-form">Add</button>}
       </div>

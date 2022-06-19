@@ -116,3 +116,14 @@ form input {
   border-bottom: 2px dotted #000;
   padding-bottom: 2em;
 }
+
+.info-list {
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}

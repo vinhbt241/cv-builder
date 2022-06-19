@@ -2,7 +2,7 @@ import React from "react";
 import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { General } from "./components/General";
-import "./styles/App.css"
+import "./styles/App.css";
 
 class App extends React.Component {
   constructor(props) {
