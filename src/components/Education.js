@@ -12,11 +12,7 @@ class Education extends React.Component {
       degree: "",
       grade: 0.0,
       formOpened: false,
-      infoSaved: [{schoolName: "Bach Khoa", 
-                  from: 2018, 
-                  to: 2022,
-                  degree: "Bachelor",
-                  grade: 8.5}]
+      infoSaved: []
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -94,7 +90,7 @@ class Education extends React.Component {
           <div>{info.degree}</div>
           <div>{info.grade}</div>
         </div>
-        <button onClick={this.removeInfo.bind(this, info.infoId)}>Delete</button>
+        <button onClick={this.removeInfo.bind(this, info.infoId)} className="delete-info">X</button>
       </div>
     );
 

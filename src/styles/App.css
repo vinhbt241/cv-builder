@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+}
+
 #root {
   width: 100vw;
   min-height: 100vh;
@@ -19,7 +23,7 @@ body {
   align-items: center;
   gap: 1rem;
   border: 1px solid black;
-  padding: 0 3rem 3rem 3rem;
+  padding: 3rem;
   margin: 2rem 0 5rem 0;
   border-radius: 15px;
 }
@@ -126,4 +130,21 @@ form input {
   display: flex;
   flex-direction: column;
   gap: .5em;
+}
+
+.delete-info {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: none;
+  background-color: #d6d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto 0;
+}
+
+.delete-info:hover {
+  background-color: #928f8f; 
 }

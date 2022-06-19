@@ -82,21 +82,28 @@ class Experience extends React.Component {
     const { formOpened, infoSaved } = this.state;
 
     const infoList = infoSaved.map(info => 
-      <li key={info.infoId}>
-        {info.companyName}
-        {info.cityName} 
-        {info.from}
-        {info.to}
-        {info.role}
-        {info.description}
-
-        <button onClick={this.removeInfo.bind(this, info.infoId)}>Delete</button>
-      </li>
+      <div className="container info-list">
+        <div className="flex-column">
+          <div>{info.companyName}</div>
+          <div>{info.cityName}</div>
+          <div>
+          {info.from} - {info.to}
+        </div>
+        </div>
+        
+        <div class="flex-column">
+          <div>{info.role}</div>
+          <div>{info.description}</div>
+        </div>
+        <button onClick={this.removeInfo.bind(this, info.infoId)} className="delete-info">X</button>
+      </div>
     );
 
     return(
       <div className="container" id="experience">
-        <h2>Experience</h2>
+        <h2>Work Experience</h2>
+
+        {infoList}
 
         {formOpened &&
           <form onSubmit={this.handleSubmit}>
@@ -161,8 +168,6 @@ class Experience extends React.Component {
             </div>
           </form>
         }
-
-        <ul>{infoList}</ul>
 
         { !formOpened && <button onClick={this.openForm} className="toggle-form">Add</button>}
       </div>
